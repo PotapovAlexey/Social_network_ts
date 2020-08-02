@@ -6,23 +6,23 @@ const Nav = () => {
     return (
         <nav className={style.nav}>
 
-            <div className={style.navReferences}>
+            <div className={style.link}>
                 <NavLink to="/profile">Profile</NavLink>
             </div>
 
-            <div className={style.navReferences}>
+            <div className={style.link}>
                 <NavLink to="/dialogs">Message</NavLink>
             </div>
 
-            <div className={style.navReferences}>
+            <div className={style.link}>
                 <NavLink to="/news">News</NavLink>
             </div>
 
-            <div className={style.navReferences}>
+            <div className={style.link}>
                 <NavLink to="/music">Music</NavLink>
             </div>
 
-            <div className={style.navReferences}>
+            <div className={style.link}>
                 <NavLink to="/settings">Settings</NavLink>
             </div>
 
