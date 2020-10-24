@@ -1,28 +1,50 @@
-import React from "react";
+import React, {ChangeEvent} from "react";
 import style from "./Dialogs.module.css"
 import DialogItem from "./DialogItem/DialogItem";
 import Message from "./Message/Message";
+import {ActionsTypes, DialogsPageType} from "../../Redux/types";
 
 
-const Dialogs = () => {
+
+type PropsType = {
+    dialogsPage: DialogsPageType
+    dispatch: (action: ActionsTypes) => void
+    addDialogMessage:()=>void
+    changeNewDialogMessage:(text:string)=>void
+}
+
+
+const Dialogs = (props: PropsType) => {
+
+    let dialogsMap = props.dialogsPage.dialogs.map(d => <DialogItem id={d.id} name={d.name}/>)
+    let messagesMap = props.dialogsPage.messages.map(m => <Message id={m.id} message={m.message}/>)
+
+    let addDialogMessage = () => {
+        props.addDialogMessage()
+    }
+
+    let changeNewDialogMessage = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        let text = e.currentTarget.value
+        props.changeNewDialogMessage(text)
+    }
+
+
     return (
         <div className={style.dialogs}>
-            <div className={style.dialogItems}>
-                <div className={style.dialog}>
-                    <DialogItem name="Dimich" id="1"/>
-                    <DialogItem name="Roma" id="2"/>
-                    <DialogItem name="Anrew" id="3"/>
-                    <DialogItem name="Alex" id="4"/>
-                    <DialogItem name="Alexander" id="5"/>
-                </div>
-            </div>
-
             <div>
-            <Message message="Hello"/>
-            <Message message="Yo"/>
-            <Message message="What are you doing"/>
-            <Message message="Whats the weather ?"/>
-            <Message message="Maybe a glass of beer?"/>
+                {dialogsMap}
+            </div>
+            <div>
+                {messagesMap}
+                <div>
+                    <div>
+                <textarea onChange={changeNewDialogMessage} placeholder="Send Message"
+                          value={props.dialogsPage.newMessage}/>
+                    </div>
+                    <div>
+                        <button onClick={addDialogMessage}>Add Post</button>
+                    </div>
+                </div>
             </div>
 
         </div>

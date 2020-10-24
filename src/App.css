@@ -1,12 +1,12 @@
 .app-wrapper {
     display: grid;
-    grid-template-rows: 70px 1fr 70px;
-    grid-template-columns: 2fr 10fr;
+    grid-template-rows: 1fr 10fr 1fr;
+    grid-template-columns: 1.5fr 10fr;
     grid-template-areas: "h h" "n c" "f f";
-
+    background-color: bisque;
 }
 
-.app-wrapper-content{
+.app-wrapper-content {
     grid-area: c;
-    background-color: blanchedalmond;
+
 }
