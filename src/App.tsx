@@ -2,19 +2,15 @@ import React from 'react';
 import './App.css';
 import Header from "./Components/Header/Header";
 import Nav from "./Components/Nav/Nav";
-import Profile from "./Components/Profile/Profile";
 import Footer from "./Components/Footer/Footer";
 import {Route} from 'react-router-dom';
-import {AppStateType} from "./Redux/redux-store";
-import {useDispatch, useSelector} from "react-redux";
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
+import UsersContainer from "./Components/Users/UsersContainer";
+import ProfileContainer from "./Components/Profile/ProfileContainerRemove";
 
 
 function App() {
 
-   /* const dispatch = useDispatch();
-    const store = useSelector((state: AppStateType) => state)*/
-    /*const [state, setState] = useState('');*/
 
 
     return (
@@ -24,11 +20,12 @@ function App() {
             <div className="app-wrapper-content">
 
                 <Route exact path="/" render={() =>
-                    <Profile />}/>
-                <Route exact path="/profile" render={() =>
-                    <Profile />}/>
+                    <ProfileContainer />}/>
+                <Route  path="/profile/:userId?" render={() =>
+                    <ProfileContainer />}/>
 
                 <Route exact path="/dialogs" render={() => <DialogsContainer/>}/>
+                <Route exact path="/users" render={() => <UsersContainer/>}/>
             </div>
             <Footer/>
 

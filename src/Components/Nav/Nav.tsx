@@ -7,6 +7,7 @@ const Nav = () => {
     let navArray = [
         {path: "/profile", title: "Profile" ,id:1},
         {path: "/dialogs", title: "Message",id:2},
+        {path: "/users", title: "Users",id:2},
         {path: "/news", title: "News",id:3},
         {path: "/music", title: "Music",id:4},
         {path: "/settings", title: "Settings",id:5},

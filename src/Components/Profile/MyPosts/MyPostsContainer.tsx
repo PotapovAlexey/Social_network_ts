@@ -9,7 +9,7 @@ import {AppStateType} from "../../../Redux/redux-store";
 const MyPostsContainer = () => {
 
     const dispatch=useDispatch()
-    const store=useSelector((state:AppStateType)=>state)
+    const profilePage=useSelector((state:AppStateType)=>state.profilePage)
 
 
     let addPost = () => {
@@ -20,7 +20,7 @@ const MyPostsContainer = () => {
     }
 
 
-    return <MyPosts profilePage={store.profilePage} dispatch={dispatch}
+    return <MyPosts profilePage={profilePage}
                     addPost={addPost} onTextAreaChangeHandler={onTextAreaChangeHandler}
 
     />

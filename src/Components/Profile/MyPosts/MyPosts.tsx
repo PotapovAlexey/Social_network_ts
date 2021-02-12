@@ -1,11 +1,10 @@
 import React, {ChangeEvent} from "react";
 import style from "./MyPosts.module.css"
 import Post from "./Post/Post";
-import {ActionsTypes,ProfilePageType} from "../../../Redux/types";
+import {ProfilePageType} from "../../../Redux/types";
 
 type PropsType = {
     profilePage: ProfilePageType
-    dispatch: (action: ActionsTypes) => void
     onTextAreaChangeHandler:(text:string)=>void
     addPost:()=>void
 

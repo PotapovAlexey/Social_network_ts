@@ -9,8 +9,8 @@ import {AppStateType} from "../../Redux/redux-store";
 const DialogsContainer = () => {
 
 let dispatch=useDispatch();
-let store=useSelector((state:AppStateType)=>state);
-debugger;
+let dialogsPage=useSelector((state:AppStateType)=>state.dialogsPage);
+
 
 
     let addDialogMessage = () => {
@@ -22,7 +22,7 @@ debugger;
     }
 
 
-    return (<Dialogs dialogsPage={store.dialogsPage} dispatch={dispatch} addDialogMessage={addDialogMessage}
+    return (<Dialogs dialogsPage={dialogsPage} dispatch={dispatch} addDialogMessage={addDialogMessage}
                      changeNewDialogMessage={changeNewDialogMessage}/>)
 }
 export default DialogsContainer

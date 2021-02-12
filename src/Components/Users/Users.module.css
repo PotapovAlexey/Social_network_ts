@@ -1,0 +1,16 @@
+.users {
+    margin: 10px;
+}
+
+.usersWrapper {
+    /* display: flex;*/
+}
+
+.usersImgSettings {
+    height: 150px;
+    width: 150px;
+}
+.selectedPage{
+    font-weight: bolder;
+}
+
