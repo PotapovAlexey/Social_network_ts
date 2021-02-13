@@ -1,4 +1,4 @@
-import {ActionsTypes,  InitialUserReducerStateType, UserReducerAcTypes, UsersType} from './types';
+import {ActionsTypes, InitialUserReducerStateType, UserReducerAcTypes, UsersType} from './types';
 import {
     CHANGE_IS_FETCHING,
     FOLLOW,
@@ -7,8 +7,15 @@ import {
     SET_USERS,
     UNFOLLOW
 } from './types';
+import axios from "axios";
+import thunkMiddleware, {ThunkAction} from "redux-thunk";
+import {getUsers} from "../Api/api";
+import {Dispatch} from "redux";
+import {AppStateType} from "./redux-store";
+import {Simulate} from "react-dom/test-utils";
 
 
+type ThunkType = ThunkAction<void, InitialUserReducerStateType, unknown, ActionsTypes>
 
 let initialState: InitialUserReducerStateType = {
     users: [
@@ -80,10 +87,22 @@ export const setTotalUsersCountAC = (totalUsersCount: number): UserReducerAcType
 export const changeIsFetchingAC = (isFetching: boolean): UserReducerAcTypes => ({type: CHANGE_IS_FETCHING, isFetching})
 
 
+export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
+    return (dispatch: Dispatch<ActionsTypes>, getState: AppStateType) => {
+        dispatch(changeIsFetchingAC(true))
+        getUsers(currentPage, pageSize).then(data => {
+            dispatch(changeIsFetchingAC(false))
+            dispatch(setUsersAC(data.items))
+            dispatch(setTotalUsersCountAC(data.totalCount))
+        }).catch((error: any)=>{dispatch(changeIsFetchingAC(false))})
+    }
+}
+
 export default usersReducer
 
+
 /*
-type ThunkType=ThunkAction<void,initialStateType,unknown,AcTypes>
+
 
 export const getUsersThunk=():ThunkType=>
     async(dispatch,getState)=>{
