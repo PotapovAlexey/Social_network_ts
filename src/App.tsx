@@ -1,12 +1,12 @@
 import React from 'react';
 import './App.css';
-import Header from "./Components/Header/Header";
+import HeaderContainer from "./Components/Header/HeaderContainer";
 import Nav from "./Components/Nav/Nav";
 import Footer from "./Components/Footer/Footer";
 import {Route} from 'react-router-dom';
 import DialogsContainer from "./Components/Dialogs/DialogsContainer";
 import UsersContainer from "./Components/Users/UsersContainer";
-import ProfileContainer from "./Components/Profile/ProfileContainerRemove";
+import ProfileContainer from "./Components/Profile/ProfileContainer";
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
 
     return (
         <div className="app-wrapper">
-            <Header/>
+            <HeaderContainer/>
             <Nav/>
             <div className="app-wrapper-content">
 

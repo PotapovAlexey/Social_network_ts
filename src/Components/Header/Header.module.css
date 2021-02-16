@@ -1,12 +1,30 @@
-.header {
+.headerContainer{
     display: grid;
     grid-area: h;
     background-color: green;
     margin: 10px;
+    grid-template-columns: 13fr 1fr
+}
+
+.header {
+    display: grid;
+  /*  grid-area: h;
+    background-color: green;
+    margin: 10px;*/
+grid-template-columns: 13fr 1fr;
 }
 
 .header img {
     width: 60px;
     height: 60px;
+
 }
 
+.loginArea{
+    margin: auto;
+}
+.loginArea a{
+    color:white;
+    text-decoration: none;
+
+}

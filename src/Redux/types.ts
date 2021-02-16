@@ -5,6 +5,7 @@ export const SET_USERS = 'SET_USERS'
 export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 export const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT'
 export const CHANGE_IS_FETCHING = 'CHANGE_IS_FETCHING'
+export const SET_USER_DATA = 'SET_USER_DATA'
 
 
 // UserReducer Type
@@ -24,7 +25,7 @@ export const CHANGE_NEW_POST_TEXT = "CHANGE_NEW_POST_TEXT"
 export type InitialProfileStateType = {
     posts: Array<PostType>
     newPostText: string
-    profile:any
+    profile: any
 }
 
 //Types for Profile page
@@ -184,3 +185,21 @@ export type changeIsFetchingACType = {
     isFetching: boolean
     type: typeof CHANGE_IS_FETCHING
 }
+//authReducerTypes
+export type AuthReducerType = AuthAC
+export type AuthAC = {
+    type: typeof SET_USER_DATA
+    data:InitialAuthReducerStateType
+}
+export type InitialAuthReducerStateType = {
+    id:number
+    email:string
+    login:string
+}
+/*
+export type DataType={
+    id:number
+    email:string
+    login:string
+}
+*/

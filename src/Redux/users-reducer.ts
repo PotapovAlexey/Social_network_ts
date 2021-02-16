@@ -7,12 +7,10 @@ import {
     SET_USERS,
     UNFOLLOW
 } from './types';
-import axios from "axios";
-import thunkMiddleware, {ThunkAction} from "redux-thunk";
-import {getUsers} from "../Api/api";
+import {ThunkAction} from "redux-thunk";
+import { usersAPI} from "../Api/api";
 import {Dispatch} from "redux";
 import {AppStateType} from "./redux-store";
-import {Simulate} from "react-dom/test-utils";
 
 
 type ThunkType = ThunkAction<void, InitialUserReducerStateType, unknown, ActionsTypes>
@@ -90,7 +88,7 @@ export const changeIsFetchingAC = (isFetching: boolean): UserReducerAcTypes => (
 export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
     return (dispatch: Dispatch<ActionsTypes>, getState: AppStateType) => {
         dispatch(changeIsFetchingAC(true))
-        getUsers(currentPage, pageSize).then(data => {
+        usersAPI.getUsers(currentPage, pageSize).then(data => {
             dispatch(changeIsFetchingAC(false))
             dispatch(setUsersAC(data.items))
             dispatch(setTotalUsersCountAC(data.totalCount))
@@ -101,17 +99,3 @@ export const getUsersThunkCreator = (currentPage: number, pageSize: number) => {
 export default usersReducer
 
 
-/*
-
-
-export const getUsersThunk=():ThunkType=>
-    async(dispatch,getState)=>{
-
-    try {
-       let items= await  API.getUsers()
-        dispatch(setUsersAC(items))
-    }
-    catch(e){
-        alert("ХУЙ ТЕБЕ А НЕ ЗАПРОС")
-    }
-    }*/

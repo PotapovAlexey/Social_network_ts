@@ -4,6 +4,9 @@ import {
     InitialProfileStateType, ProfileActionTypes,
     SET_USER_PROFILE
 } from "./types";
+import {profileAPI} from "../Api/api";
+import {Dispatch} from "redux";
+import {AppStateType} from "./redux-store";
 
 
 let initialState: InitialProfileStateType = {
@@ -58,6 +61,28 @@ const profileReducer = (state = initialState, action: ProfileActionTypes) => {
 export const addPostAC = (): ProfileActionTypes => ({type: ADD_POST})
 export const changeNewPostTextAC = (text: string): ProfileActionTypes => ({type: CHANGE_NEW_POST_TEXT, newText: text})
 export const setUserProfileAC = (profile: number): ProfileActionTypes => ({type: SET_USER_PROFILE, profile})
+
+
+
+
+
+
+
+export const setUserIdThunk=(userId:string)=>{
+    return (dispatch: Dispatch<ProfileActionTypes>, getState: AppStateType)=>{
+
+        profileAPI.setUserId(userId).then(response=> {
+            console.log("res",response)
+            dispatch(setUserProfileAC(response))
+        })
+
+    }
+}
+
+
+
+
+
 
 export default profileReducer
 

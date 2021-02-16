@@ -6,6 +6,34 @@ const instance = axios.create({
     withCredentials: true
 })
 
+export const usersAPI = {
+    getUsers(currentPage: number, pageSize: number) {
+        return instance.get(`users?page=${currentPage}&count=${pageSize}`
+        )
+            .then(response => {
+                return response.data
+            })
+    }
+}
+export const profileAPI = {
+    setUserId(userId: string) {
+        return instance.get(`profile/${userId}`).then(response => {
+            return response.data
+        })
+    }
+}
+
+
+export const setUsersData = () => {
+    return instance.get(`auth/me`).then(response => {
+        if (response.data.resultCode === 0) {
+            return response.data.data
+        }
+    })
+}
+
+
+/*
 export const getUsers = (currentPage: number, pageSize: number) => {
     return instance.get(`users?page=${currentPage}&count=${pageSize}`,
     )
@@ -13,14 +41,4 @@ export const getUsers = (currentPage: number, pageSize: number) => {
             return response.data
         })
 }
-
-
-/*
-export const API = {
-    getUsers(){
-        return instance.get(`users`).then(response=>
-        response.data.items ) 
-    }
-}
 */
-
